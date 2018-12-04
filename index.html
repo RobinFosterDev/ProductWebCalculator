@@ -29,65 +29,25 @@
   </div>
 </nav>
 
-	<div class="container">
-
-
-
-  	<div class="container">
+<div id="bodyContainer" class="container">
     	<h1 class="display-4">Canto Pricing Calculator</h1>
     	<p class="lead">Follow through the instructions below to calculate the Canto costs</p>
 
 		<h5>Please choose a base package to begin: </h5>
 		<form>
-
-			  <div class="row">
-			    <div class="col-xs-12">
-			      <div class="btn-group btn-group-vertical" data-toggle="buttons">
-			        <label class="btn active" style="text-align:left;">
-			          <input id="starter" type="radio" name='package' checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span><strong>Canto Starter Package</strong> 
-						   <br>
-						   5 Users, 50 Consumers, 1TB Hot Storage and 1 Brand Portal  
-			        </label>
-			        <label class="btn" style="text-align:left;">
-			          	<input id="team" type="radio" name='package'><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span><strong>Canto Team Bundle</strong> 
-						    <p>10 Users, 100 Consumers, 1TB Hot Storage and 2 Brand Portals</p></span>
-			        </label>
-			        <label class="btn" style="text-align:left;">
-			          <input id="pro" type="radio" name='package'><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span><strong>Canto Pro Bundle</strong> 
-						    
-						    <p>20 Users, 200 Consumers, 3TB Hot Storage and 3 Brand Portals</p></span>
-			        </label>
-			      </div>
-
-			    </div>
-			  </div>
-</div>
-
-		<!-- 	<div class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadios" id="starter" value="option1" checked>
-			  <label class="form-check-label" for="exampleRadios1">
-			    <strong>Canto Starter Package</strong> 
-			    <br>
-			    <p>5 Users, 50 Consumers, Unlimited Guests, 1 TB Data Storage and 1 Brand Portal</p>
-			  </label>
+			<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+			  	<label class="btn btn-light active" onclick="starterClicked()">
+			    	<input type="radio" name="options" id="starter" autocomplete="off"> <strong>Canto Starter Package </strong><br> 5 Users, 50 Consumers, 1TB Hot Storage and 1 Brand Portal 
+			  	</label>
+			  	<label class="btn btn-light" onclick="teamClicked()">
+			    	<input type="radio" name="options" id="team" autocomplete="off"> <strong>Canto Team Package </strong><br> 10 Users, 100 Consumers, 1TB Hot Storage and 2 Brand Portals
+			  	</label>
+			  	<label class="btn btn-light" onclick="proClicked()">
+			    	<input type="radio" name="options" id="pro" autocomplete="off"> <strong>Canto Pro Package </strong><br> 20 Users, 200 Consumers, 3TB Hot Storage and 3 Brand Portals
+			  	</label>
 			</div>
-			<div class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadios" id="team" value="option2">
-			  <label class="form-check-label" for="exampleRadios2">
-			    <strong>Canto TEAM Bundle</strong> 
-			    <br>
-			    <p>10 Users, 100 Consumers, Unlimited Guests, 1 TB Data Storage and 2 Brand Portals</p>
-			  </label>
-			</div>
-			<div class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadios" id="pro" value="option2">
-			  <label class="form-check-label" for="exampleRadios2">
-			    <strong>Canto Pro Bundle</strong> 
-			    <br>
-			    <p>20 Users, 200 Consumers, Unlimited Guests, 3 TB Data Storage, 3 Brand Portals</p>
-			  </label>
-			</div>
- -->
+			<br>
+			<br>
 
 			<h5>Now please choose any extras:</h5>
 
@@ -154,6 +114,7 @@
 <script type="text/javascript">
 		
 	document.addEventListener("click", updateForm);
+
 	// starter package variables
 	var starter = document.getElementById("starter");
 	var starterUsers = 5;
@@ -173,10 +134,16 @@
 	var proHotStorage = 1;
 	var proPortal = 1;
 
-	
-	
+	function starterClicked(){
+		starter.checked = true;
+	}
+	function teamClicked(){
+		team.checked = true;
+	}
+	function proClicked(){
+		pro.checked = true;
+	}
 	function refreshForm(){
-
 		var addonQuantityFields = new Array(
 			document.getElementById("consumerQuantity"),
 			document.getElementById("adminQuantity"),
@@ -184,12 +151,10 @@
 			document.getElementById("hotStorageQuantity"),
 			document.getElementById("coldStorageQuantity")
 			)
-
 		for (var i = 0; i < addonQuantityFields.length; i++) {
 			addonQuantityFields[i].value = 0;
 		}
 	}
-
 
 	function updateForm(){
 		// The quantity fields for the addons
@@ -198,7 +163,6 @@
 		var portalQuantity = document.getElementById("portalQuantity").value;
 		var hotStorageQuantity = document.getElementById("hotStorageQuantity").value;
 		var coldStorageQuantity = document.getElementById("coldStorageQuantity").value;
-
 		// The price fields for the addons
 		var consumerCost = document.getElementById("consumerCost");
 		var adminCost = document.getElementById("adminCost");
@@ -213,27 +177,21 @@
 		var portalPrice = 104.5;
 		var hotStoragePrice = 3410;
 		var coldStoragePrice = 990;
-
 		var consumerTotal = 0;
 		var adminTotal = 0;
 		var portalTotal = 0;
 		var hotStorageTotal = 0;
 		var coldStorageTotal = 0;
 		var addonTotal = 0;
-
 		var totalPrice = document.getElementById("totalPrice");
-
 		var packagePrice = 0;
 		var packageTotal = document.getElementById("packageTotal");
 
 
-
-// Check to determine the cost of a package depending on the selection of of the user
-
+		// Check to determine the cost of a package depending on the selection of of the user
 		if (team.checked == true) {
 			packagePrice += 18500;
 			console.log("The current price after selecting the TEAM package is: $" + packagePrice);
-
 		} else if (pro.checked == true) {
 			packagePrice += 37000;
 			console.log("The current price after selecting the PRO package is: $" + packagePrice);
@@ -243,27 +201,22 @@
 			console.log("The current price after selecting the starter package is: $" + packagePrice);
 		}
 
-		// packageTotal.innerHTML = "$" + packagePrice;
 
+		// packageTotal.innerHTML = "$" + packagePrice;
 		consumerTotal = consumerQuantity*consumerPrice;
 		adminTotal = adminQuantity*adminPrice;
 		portalTotal = portalQuantity*portalPrice;
 		hotStorageTotal = hotStorageQuantity*hotStoragePrice;
 		coldStorageTotal = coldStorageQuantity*coldStoragePrice;
-
 		addonTotal = consumerTotal + adminTotal + portalTotal + hotStorageTotal + coldStorageTotal;
 		totalAddonCost.innerHTML = "$" + Math.round(addonTotal);
-
 		consumerCost.innerHTML = "$" + Math.round(consumerTotal);
 		adminCost.innerHTML = "$" + Math.round(adminTotal);
 		portalCost.innerHTML = "$" + Math.round(portalTotal);
 		hotStorageCost.innerHTML = "$" + Math.round(hotStorageTotal);
 		coldStorageCost.innerHTML = "$" + Math.round(coldStorageTotal);
-
 		totalPrice.innerHTML = "Total: $" + Math.round((packagePrice + addonTotal));
 		
-
-
 }
 </script>
 
