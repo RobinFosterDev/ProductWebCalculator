@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,7 +26,7 @@
       </li> -->
     </ul>
     <span class="">
-      <button class="btn btn-secondary" onclick="refreshForm()"> Refresh</button>
+      <button class="btn btn-primary" onclick="refreshForm()"> Refresh</button>
     </span>
   </div>
 </nav>
@@ -39,9 +40,11 @@
 		<div class="row">
 		<form>
 			<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
-			  	<label class="btn btn-light active" onclick="starterClicked()" style="text-align: left;">
-			    	<input type="radio" name="options" id="starter" autocomplete="off"> <strong>Product Starter Package </strong><br> 5 Users, 50 Consumers, 1TB Hot Storage and 1 Brand Portal 
-			  	</label>
+			  	<div id="test" class="btn btn-light active" onclick="starterClicked()">
+				  	<!-- <label class="btn btn-secondary active" onclick="starterClicked()" style="text-align: left;"> -->
+				    	<input type="radio" name="options" id="starter" autocomplete="off"> <strong>Product Starter Package </strong><br> 5 Users, 50 Consumers, 1TB Hot Storage and 1 Brand Portal 
+				  	<!-- </label> -->
+			  	</div>
 			  	<label class="btn btn-light" onclick="teamClicked()" style="text-align: left;">
 			    	<input type="radio" name="options" id="team" autocomplete="off"> <strong>Product Team Package </strong><br> 10 Users, 100 Consumers, 1TB Hot Storage and 2 Brand Portals
 			  	</label>
@@ -102,7 +105,7 @@
 					<h3 id="totalPrice">Total: $12350</h3>
 				</div>
 				<div class="col-sm">
-					<button onclick="refreshForm()" id="refreshButton" type="button" class="btn btn-secondary">Refresh</button>
+					<button onclick="refreshForm()" id="refreshButton" type="button" class="btn btn-primary">Refresh</button>
 				</div>	
 			</div>
 
@@ -138,9 +141,12 @@
 
 	function starterClicked(){
 		starter.checked = true;
+		var test = getElementById("test");
+		test.classList.add("btn-primary");
 	}
 	function teamClicked(){
 		team.checked = true;
+		team.classList.add("btn-primary")
 	}
 	function proClicked(){
 		pro.checked = true;
