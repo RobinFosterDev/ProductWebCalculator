@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Canto Pricing Calculator</title>
+	<title>Product Pricing Calculator</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="images/dblogo.png" alt="databasics logo" style="width:130px;height:50px;"></a>
+  <a class="navbar-brand" href="#">Product Logo</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Canto <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Product <span class="sr-only">(current)</span></a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Cumulus</a>
@@ -24,32 +24,35 @@
         <a class="nav-link" href="#">Additional Info</a>
       </li> -->
     </ul>
-    <span class="navbar-text">
-      Canto Pricing Calculator
+    <span class="">
+      <button class="btn btn-secondary" onclick="refreshForm()"> Refresh</button>
     </span>
   </div>
 </nav>
 
 <div id="bodyContainer" class="container">
-    	<h1 class="display-4">Canto Pricing Calculator</h1>
-    	<p class="lead">Follow through the instructions below to calculate the Canto costs</p>
-
+    	<h1 class="display-4">Product Pricing Calculator</h1>
+    	<p class="lead">Follow through the instructions below to calculate the Product costs</p>
+	<div class="row">
 		<h5>Please choose a base package to begin: </h5>
+		</div>
+		<div class="row">
 		<form>
 			<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
 			  	<label class="btn btn-light active" onclick="starterClicked()" style="text-align: left;">
-			    	<input type="radio" name="options" id="starter" autocomplete="off"> <strong>Canto Starter Package </strong><br> 5 Users, 50 Consumers, 1TB Hot Storage and 1 Brand Portal 
+			    	<input type="radio" name="options" id="starter" autocomplete="off"> <strong>Product Starter Package </strong><br> 5 Users, 50 Consumers, 1TB Hot Storage and 1 Brand Portal 
 			  	</label>
 			  	<label class="btn btn-light" onclick="teamClicked()" style="text-align: left;">
-			    	<input type="radio" name="options" id="team" autocomplete="off"> <strong>Canto Team Package </strong><br> 10 Users, 100 Consumers, 1TB Hot Storage and 2 Brand Portals
+			    	<input type="radio" name="options" id="team" autocomplete="off"> <strong>Product Team Package </strong><br> 10 Users, 100 Consumers, 1TB Hot Storage and 2 Brand Portals
 			  	</label>
 			  	<label class="btn btn-light" onclick="proClicked()" style="text-align: left;">
-			    	<input type="radio" name="options" id="pro" autocomplete="off"> <strong>Canto Pro Package </strong><br> 20 Users, 200 Consumers, 3TB Hot Storage and 3 Brand Portals
+			    	<input type="radio" name="options" id="pro" autocomplete="off"> <strong>Product Pro Package </strong><br> 20 Users, 200 Consumers, 3TB Hot Storage and 3 Brand Portals
 			  	</label>
 			</div>
+		</div>
 			<br>
 			<br>
-
+		<div class="row">
 			<h5>Now please choose any extras:</h5>
 
 			<table class="table">
@@ -64,46 +67,44 @@
 			    <tr>
 					<td>Consumer Licenses</td>
 					<td><input type="number" id="consumerQuantity" name="" min="0" defaultValue ="0"></td>
-					<td id="consumerCost">$0.00</td>
+					<td id="consumerCost">$0</td>
 				</tr>
 				<tr>
 					<td>Admin/Contributor Licenses</td>
 					<td><input type="number" id="adminQuantity" name="" min="0"></td>
-					<td id="adminCost">$0.00</td>
+					<td id="adminCost">$0</td>
 				</tr>
 				<tr>
 					<td>Portals</td>
 					<td><input type="number" id="portalQuantity" name="" min="0"></td>
-					<td id="portalCost">$0.00</td>
+					<td id="portalCost">$0</td>
 				</tr>
 				<tr>
 					<td>1TB Hot Storage</td>
 					<td><input type="number" id="hotStorageQuantity" name="" min="0"></td>
-					<td id="hotStorageCost">$0.00</td>
+					<td id="hotStorageCost">$0</td>
 				</tr>
 				<tr>
 					<td>1TB Cold Storage</td>
 					<td><input type="number" id="coldStorageQuantity" name="" min="0"></td>
-					<td id="coldStorageCost">$0.00</td>
+					<td id="coldStorageCost">$0</td>
 				</tr>
 				<tr>
 					<td>Addon Total</td>
 					<td></td>
-					<td id="totalAddonCost">$0.00</td>
+					<td id="totalAddonCost">$0</td>
 				</tr>
 			  </tbody>
 			</table>
-
-			<table>
-				<tr>
-					<td>
-						<h3 id="totalPrice">Total: $12350</h3>
-					</td>
-					<td style="text-align: left;">
-						<button onclick="refreshForm()" id="refreshButton" type="button" class="btn btn-secondary">Refresh</button>
-					</td>
-					</tr>
-			</table>
+		</div>
+			<div class="row">
+				<div class="col-md">
+					<h3 id="totalPrice">Total: $12350</h3>
+				</div>
+				<div class="col-sm">
+					<button onclick="refreshForm()" id="refreshButton" type="button" class="btn btn-secondary">Refresh</button>
+				</div>	
+			</div>
 
 			<br>
 	<!-- 	<button id="calculateButton">Calculate</button> -->
@@ -178,14 +179,14 @@
 		var portalPrice = 104.5;
 		var hotStoragePrice = 3410;
 		var coldStoragePrice = 990;
-		var consumerTotal = 0;
-		var adminTotal = 0;
-		var portalTotal = 0;
-		var hotStorageTotal = 0;
-		var coldStorageTotal = 0;
-		var addonTotal = 0;
+		var consumerTotal = 0.00;
+		var adminTotal = 0.00;
+		var portalTotal = 0.00;
+		var hotStorageTotal = 0.00;
+		var coldStorageTotal = 0.00;
+		var addonTotal = 0.00;
 		var totalPrice = document.getElementById("totalPrice");
-		var packagePrice = 0;
+		var packagePrice = 0.00;
 		var packageTotal = document.getElementById("packageTotal");
 
 
